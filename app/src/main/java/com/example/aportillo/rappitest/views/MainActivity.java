@@ -12,12 +12,13 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.example.aportillo.rappitest.R;
+import com.example.aportillo.rappitest.models.ListData;
 
 /**
  * Created by aportillo on 27/09/2016.
  */
 public class MainActivity extends AppCompatActivity {
-
+    ListData value;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +41,8 @@ public class MainActivity extends AppCompatActivity {
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         recList.setLayoutManager(llm);
 
-
+        CardViewAdapter ca = new CardViewAdapter("Hola Mundo");
+        recList.setAdapter(ca);
     }
 
     @Override
