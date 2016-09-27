@@ -1,13 +1,17 @@
-package com.example.aportillo.rappitest;
+package com.example.aportillo.rappitest.views;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+
+import com.example.aportillo.rappitest.R;
 
 /**
  * Created by aportillo on 27/09/2016.
@@ -30,7 +34,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
+        RecyclerView recList = (RecyclerView) findViewById(R.id.recyclerView);
+        recList.setHasFixedSize(true);
+        LinearLayoutManager llm = new LinearLayoutManager(this);
+        llm.setOrientation(LinearLayoutManager.VERTICAL);
+        recList.setLayoutManager(llm);
 
 
     }
@@ -51,4 +59,6 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+
 }

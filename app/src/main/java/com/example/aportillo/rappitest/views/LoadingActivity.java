@@ -1,10 +1,11 @@
-package com.example.aportillo.rappitest;
+package com.example.aportillo.rappitest.views;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
+import com.example.aportillo.rappitest.R;
 import com.example.aportillo.rappitest.constans.MobileConstant;
 import com.example.aportillo.rappitest.constans.RestApi;
 import com.example.aportillo.rappitest.models.ListData;
