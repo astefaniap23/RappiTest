@@ -6,11 +6,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import com.example.aportillo.rappitest.R;
-import com.example.aportillo.rappitest.constans.MobileConstant;
-import com.example.aportillo.rappitest.constans.RestApi;
 import com.example.aportillo.rappitest.models.ListData;
 import com.example.aportillo.rappitest.services.ListService;
 import com.example.aportillo.rappitest.services.ServiceInterface;
+import com.example.aportillo.rappitest.util.constans.MobileConstant;
+import com.example.aportillo.rappitest.util.constans.RestApi;
 
 public class LoadingActivity extends AppCompatActivity {
     private ListService listService= new ListService(RestApi.BASE_URL);
@@ -34,7 +34,7 @@ public class LoadingActivity extends AppCompatActivity {
                 }
                 @Override
                 public void onError() {
-                    Log.e(MobileConstant.msgError, MobileConstant.msgError);
+                    Log.e(MobileConstant.error, MobileConstant.error);
                 }
             } );
         } catch (Exception e) {

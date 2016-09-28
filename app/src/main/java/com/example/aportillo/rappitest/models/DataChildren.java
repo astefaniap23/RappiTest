@@ -1,9 +1,5 @@
 package com.example.aportillo.rappitest.models;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.util.Base64;
-
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
@@ -15,8 +11,8 @@ public class DataChildren implements Serializable {
 
     @SerializedName("display_name")
     private String displayName;
-    @SerializedName("icon_img")
-    private String iconImg;
+    @SerializedName("banner_img")
+    private String bannerImg;
     @SerializedName("title")
     private String title;
     @SerializedName("header_title")
@@ -24,9 +20,9 @@ public class DataChildren implements Serializable {
     @SerializedName("description")
     private String description;
 
-    public DataChildren(String displayName, String iconImg, String title, String headerTitle, String description) {
+    public DataChildren(String displayName, String bannerImg, String title, String headerTitle, String description) {
         this.displayName = displayName;
-        this.iconImg = iconImg;
+        this.bannerImg = bannerImg;
         this.title = title;
         this.headerTitle = headerTitle;
         this.description = description;
@@ -40,19 +36,13 @@ public class DataChildren implements Serializable {
         this.displayName = displayName;
     }
 
-    public String getIconImg() {
-        return iconImg;
-    }
-
-    public Bitmap getIconImgBitMap() {
-        byte[] decodedString = Base64.decode(getIconImg(), Base64.DEFAULT);
-        Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
-        return decodedByte;
+    public String getBannerImg() {
+        return bannerImg;
     }
 
 
-    public void setIconImg(String iconImg) {
-        this.iconImg = iconImg;
+    public void setBannerImg(String bannerImg) {
+        this.bannerImg = bannerImg;
     }
 
     public String getTitle() {

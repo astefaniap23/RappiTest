@@ -7,8 +7,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 
 import com.example.aportillo.rappitest.R;
@@ -19,6 +21,7 @@ import com.example.aportillo.rappitest.models.ListData;
  */
 public class MainActivity extends AppCompatActivity {
     ListData value;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,8 +30,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         Bundle extras = getIntent().getExtras();
-        if (extras != null)
-        {
+        if (extras != null) {
             value = (ListData) getIntent().getSerializableExtra("listData");
         }
 
@@ -46,6 +48,26 @@ public class MainActivity extends AppCompatActivity {
         LinearLayoutManager llm = new LinearLayoutManager(this);
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         recList.setLayoutManager(llm);
+        recList.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
+                                           @Override
+                                           public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
+                                               Log.i(rv.toString(), e.toString());
+                                               return false;
+                                           }
+
+                                           @Override
+                                           public void onTouchEvent(RecyclerView rv, MotionEvent e) {
+                                               Log.i(rv.toString(), e.toString());
+                                           }
+
+                                           @Override
+                                           public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+                                               Log.i("disallowIntercept", String.valueOf(disallowIntercept));
+                                           }
+                                       }
+
+        );
+
 
         CardViewAdapter ca = new CardViewAdapter(value.getData().getChildrenList());
         recList.setAdapter(ca);

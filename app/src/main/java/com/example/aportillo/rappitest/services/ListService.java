@@ -1,10 +1,9 @@
 package com.example.aportillo.rappitest.services;
 
-import android.content.Context;
 import android.util.Log;
 
-import com.example.aportillo.rappitest.constans.MobileConstant;
 import com.example.aportillo.rappitest.services.interfaces.ListServiceI;
+import com.example.aportillo.rappitest.util.constans.MobileConstant;
 
 import retrofit2.Call;
 
@@ -28,7 +27,7 @@ public class ListService<T>extends  BaseServices {
             Call<T> aCall = (Call<T>) this.listServiceI.callList();
             serviceGenerator.response(aCall, serviceInterface);
         } catch (Exception e) {
-            Log.e(MobileConstant.msgError, getClass().getSimpleName() + ":" + e.getMessage());
+            Log.e(MobileConstant.error, getClass().getSimpleName() + ":" + e.getMessage());
         }
     }
 }

@@ -2,21 +2,13 @@ package com.example.aportillo.rappitest.services;
 
 
 import android.content.Context;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
-import android.net.http.HttpResponseCache;
-import android.util.Log;
 
-import com.example.aportillo.rappitest.constans.RestApi;
+import com.example.aportillo.rappitest.util.constans.RestApi;
 
 import java.io.File;
-import java.io.IOException;
 
 import okhttp3.Cache;
-import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 

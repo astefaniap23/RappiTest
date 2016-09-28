@@ -1,5 +1,6 @@
 package com.example.aportillo.rappitest.views;
 
+import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +9,8 @@ import android.widget.TextView;
 
 import com.example.aportillo.rappitest.R;
 import com.example.aportillo.rappitest.models.Children;
+import com.example.aportillo.rappitest.util.StringUtil;
+import com.example.aportillo.rappitest.util.UtilImage;
 
 import java.util.ArrayList;
 
@@ -17,6 +20,7 @@ import java.util.ArrayList;
 public class CardViewAdapter extends RecyclerView.Adapter<CardViewHolder> {
 
     private ArrayList<Children>  listData;
+    UtilImage utilBitmap = new UtilImage();
 
     public CardViewAdapter(ArrayList<Children> listData) {
         this.listData = listData;
@@ -34,6 +38,12 @@ public class CardViewAdapter extends RecyclerView.Adapter<CardViewHolder> {
     @Override
     public void onBindViewHolder(CardViewHolder holder, int position) {
         holder.vText.setText(listData.get(position).getDataChildrenList().getTitle());
+        if(!(StringUtil.isEmptyOrNull(listData.get(position).getDataChildrenList().getBannerImg().toString()))) {
+            holder.vImageView.setImageBitmap(UtilImage.image(listData.get(position).getDataChildrenList().getBannerImg()));
+        }else {
+            holder.vImageView.setImageResource(R.drawable.rappitest);
+        }
+        //holder.vImageView.setImageDrawable(drawable);
     }
 
     @Override
@@ -50,5 +60,8 @@ public class CardViewAdapter extends RecyclerView.Adapter<CardViewHolder> {
             vText =  (TextView) v.findViewById(R.id.text);
 
         }
+    }
+    public Drawable loadImage(String src, String name){
+        return UtilImage.loadImageFromURL(src,name);
     }
 }
