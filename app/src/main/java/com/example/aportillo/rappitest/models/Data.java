@@ -2,12 +2,13 @@ package com.example.aportillo.rappitest.models;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by aportillo on 27/09/2016.
  */
-public class Data {
+public class Data implements Serializable {
 
     @SerializedName("modhash")
     private String modhash;

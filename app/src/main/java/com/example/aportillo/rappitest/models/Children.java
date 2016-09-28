@@ -2,10 +2,12 @@ package com.example.aportillo.rappitest.models;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+
 /**
  * Created by aportillo on 27/09/2016.
  */
-public class Children {
+public class Children implements Serializable {
 
     @SerializedName("kind")
     private String kind;

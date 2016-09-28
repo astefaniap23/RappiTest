@@ -6,10 +6,12 @@ import android.util.Base64;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+
 /**
  * Created by aportillo on 27/09/2016.
  */
-public class DataChildren {
+public class DataChildren implements Serializable {
 
     @SerializedName("display_name")
     private String displayName;

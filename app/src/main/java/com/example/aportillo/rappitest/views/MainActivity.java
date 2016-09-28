@@ -26,6 +26,12 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        Bundle extras = getIntent().getExtras();
+        if (extras != null)
+        {
+            value = (ListData) getIntent().getSerializableExtra("listData");
+        }
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,8 +47,10 @@ public class MainActivity extends AppCompatActivity {
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         recList.setLayoutManager(llm);
 
-        CardViewAdapter ca = new CardViewAdapter(value.getKind());
+        CardViewAdapter ca = new CardViewAdapter(value.getData().getChildrenList());
         recList.setAdapter(ca);
+
+
     }
 
     @Override
