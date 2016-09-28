@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         recList.setLayoutManager(llm);
 
-        CardViewAdapter ca = new CardViewAdapter("Hola Mundo");
+        CardViewAdapter ca = new CardViewAdapter(value.getKind());
         recList.setAdapter(ca);
     }
 

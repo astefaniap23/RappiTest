@@ -12,6 +12,11 @@ import com.example.aportillo.rappitest.models.ListData;
 import com.example.aportillo.rappitest.services.ListService;
 import com.example.aportillo.rappitest.services.ServiceInterface;
 
+import java.io.IOException;
+
+import okhttp3.Interceptor;
+import retrofit2.Response;
+
 public class LoadingActivity extends AppCompatActivity {
     private ListService listService= new ListService(RestApi.BASE_URL);
 
@@ -40,4 +45,6 @@ public class LoadingActivity extends AppCompatActivity {
             Log.e(getClass().getSimpleName(), "loadListData - " + e.getMessage());
         }
     }
+
+
 }
