@@ -1,4 +1,4 @@
-package com.example.aportillo.rappitest.constans;
+package com.example.aportillo.rappitest.util.constans;
 
 /**
  * Created by aportillo on 27/09/2016.
