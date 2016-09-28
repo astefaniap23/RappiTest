@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.aportillo.rappitest.R;
@@ -41,9 +42,9 @@ public class CardViewAdapter extends RecyclerView.Adapter<CardViewHolder> {
         if(!(StringUtil.isEmptyOrNull(listData.get(position).getDataChildrenList().getBannerImg().toString()))) {
             holder.vImageView.setImageBitmap(UtilImage.image(listData.get(position).getDataChildrenList().getBannerImg()));
         }else {
-            holder.vImageView.setImageResource(R.drawable.rappitest);
+            holder.vImageView.setBackgroundResource(R.drawable.rappitest);
         }
-        //holder.vImageView.setImageDrawable(drawable);
+        holder.vImageView.setScaleType(ImageView.ScaleType.FIT_XY);
     }
 
     @Override
