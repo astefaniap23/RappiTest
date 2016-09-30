@@ -20,7 +20,7 @@ public class DetailActivity extends AppCompatActivity {
     TextView textViewDetail;
     //Toolbar toolbar;
     FloatingActionButton fab;
-    String value, iconImg, headerTitle, url;
+    String value, iconImg, headerTitle, url,bannerImg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +35,7 @@ public class DetailActivity extends AppCompatActivity {
             iconImg = (String) getIntent().getSerializableExtra("iconImg");
             headerTitle = (String) getIntent().getSerializableExtra(("headerTitle"));
             url = (String) getIntent().getSerializableExtra(("url"));
-
+            bannerImg = (String) getIntent().getSerializableExtra(("bannerImg"));
         }
 
         loadResources();
@@ -44,16 +44,13 @@ public class DetailActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         textViewDetail.setText((Html.fromHtml(value)));
         fab.setImageDrawable(UtilImage.loadImageFromURL(iconImg));
-
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 intentUrl(url);
             }
         });
-            /*getSupportActionBar().setLogo(R.drawable.common_full_open_on_phone);
-            getSupportActionBar().setDisplayUseLogoEnabled(true);
-          dataChildren.setTitle((String) getIntent().getSerializableExtra("title"));*/
+        toolbar.setBackground(UtilImage.loadImageFromURL(bannerImg));
 
     }
 

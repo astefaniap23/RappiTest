@@ -46,6 +46,6 @@
         app:layout_anchorGravity="bottom|end"
         android:scaleType="fitCenter"
         android:background="@drawable/ic_share_white"
-        app:fabSize="mini" />
+        app:fabSize="normal" />
 
 </android.support.design.widget.CoordinatorLayout>

@@ -41,8 +41,10 @@ public class CardViewAdapter extends RecyclerView.Adapter<CardViewHolder> implem
     public void onBindViewHolder(CardViewHolder holder, final int position) {
 
         holder.vText.setText(listData.get(position).getDataChildrenList().getTitle());
-        if (!(StringUtil.isEmptyOrNull(listData.get(position).getDataChildrenList().getBannerImg().toString())))
+        if (!(StringUtil.isEmptyOrNull(listData.get(position).getDataChildrenList().getBannerImg().toString()))) {
             holder.vImageView.setImageBitmap(loadImage(listData.get(position).getDataChildrenList().getBannerImg()));
+        }else{
+        }
         holder.vImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -51,6 +53,7 @@ public class CardViewAdapter extends RecyclerView.Adapter<CardViewHolder> implem
                 intent.putExtra("iconImg",listData.get(position).getDataChildrenList().getIconImg());
                 intent.putExtra("headerTitle",listData.get(position).getDataChildrenList().getHeaderTitle());
                 intent.putExtra("url",listData.get(position).getDataChildrenList().getUrl());
+                intent.putExtra("bannerImg",listData.get(position).getDataChildrenList().getBannerImg());
                 view.getContext().startActivity(intent);
 
             }

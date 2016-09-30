@@ -9,8 +9,8 @@
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="@dimen/app_bar_height"
-            android:layout_height="150dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             android:layout_gravity="center"
             android:scaleType="fitCenter"
             android:src="@drawable/loadrappi"
@@ -19,12 +19,15 @@
 
         <TextView
             android:id="@+id/text"
-            style="@style/Base.TextAppeara"
+            style="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+            android:textAppearance="@color/colorPrimary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/imageView"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:text="Title news" />
+            android:text="Title news"
+            android:background="#88000000"
+            android:textColor="#ffffff"/>
     </RelativeLayout>
 </android.support.v7.widget.CardView>
