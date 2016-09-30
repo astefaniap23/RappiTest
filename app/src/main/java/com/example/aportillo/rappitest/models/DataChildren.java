@@ -19,13 +19,18 @@ public class DataChildren implements Serializable {
     private String headerTitle;
     @SerializedName("description")
     private String description;
+    @SerializedName("icon_img")
+    private String iconImg;
 
-    public DataChildren(String displayName, String bannerImg, String title, String headerTitle, String description) {
+
+    public DataChildren(String displayName, String bannerImg, String title, String headerTitle, String description,String iconImg) {
         this.displayName = displayName;
         this.bannerImg = bannerImg;
         this.title = title;
         this.headerTitle = headerTitle;
         this.description = description;
+        this.iconImg = iconImg;
+
     }
 
     public String getDisplayName() {
@@ -67,6 +72,14 @@ public class DataChildren implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getIconImg() {
+        return iconImg;
+    }
+
+    public void setIconImg(String iconImg) {
+        this.iconImg = iconImg;
     }
 }
 

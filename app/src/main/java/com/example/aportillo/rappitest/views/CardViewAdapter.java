@@ -1,5 +1,6 @@
 package com.example.aportillo.rappitest.views;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
@@ -20,9 +21,9 @@ import java.util.ArrayList;
 /**
  * Created by aportillo on 27/09/2016.
  */
-public class CardViewAdapter extends RecyclerView.Adapter<CardViewHolder> implements View.OnCreateContextMenuListener, View.OnClickListener  {
+public class CardViewAdapter extends RecyclerView.Adapter<CardViewHolder> implements View.OnCreateContextMenuListener, View.OnClickListener {
 
-    private ArrayList<Children>  listData;
+    private ArrayList<Children> listData;
     UtilImage utilBitmap = new UtilImage();
 
     public CardViewAdapter(ArrayList<Children> listData) {
@@ -39,15 +40,22 @@ public class CardViewAdapter extends RecyclerView.Adapter<CardViewHolder> implem
     }
 
     @Override
-    public void onBindViewHolder(CardViewHolder holder, int position) {
+    public void onBindViewHolder(CardViewHolder holder, final int position) {
 
         holder.vText.setText(listData.get(position).getDataChildrenList().getTitle());
-        if(!(StringUtil.isEmptyOrNull(listData.get(position).getDataChildrenList().getBannerImg().toString()))) {
+        if (!(StringUtil.isEmptyOrNull(listData.get(position).getDataChildrenList().getBannerImg().toString())))
             holder.vImageView.setImageBitmap(loadImage(listData.get(position).getDataChildrenList().getBannerImg()));
-        }else {
-            holder.vImageView.setBackgroundResource(R.drawable.rappitest);
-        }
-        holder.vImageView.setScaleType(ImageView.ScaleType.FIT_XY);
+        holder.vImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), DetailActivity.class);
+                intent.putExtra("description", listData.get(position).getDataChildrenList().getDescription());
+                intent.putExtra("iconImg",listData.get(position).getDataChildrenList().getIconImg());
+                view.getContext().startActivity(intent);
+
+            }
+        });
+
     }
 
     @Override
@@ -55,8 +63,8 @@ public class CardViewAdapter extends RecyclerView.Adapter<CardViewHolder> implem
         return listData.size();
     }
 
-    public Bitmap loadImage(String src){
-        return UtilImage.image(src);
+    public Bitmap loadImage(String src) {
+        return UtilImage.getImageFromUrl(src);
     }
 
     @Override

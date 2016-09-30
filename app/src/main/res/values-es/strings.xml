@@ -2,4 +2,5 @@
     <string name="app_name">RappiTest</string>
     <string name="action_settings">Ajustes</string>
     <string name="is_not_successful">No es satisfactorio</string>
+    <string name="rappi_news">Rappi Noticias</string>
 </resources>

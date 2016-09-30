@@ -1,10 +1,12 @@
 package com.example.aportillo.rappitest.util;
 
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.util.Log;
 
 import com.example.aportillo.rappitest.util.constans.MobileConstant;
@@ -19,33 +21,18 @@ import java.net.URL;
  */
 public class UtilImage {
 
-    public static Bitmap getBitmapFromURL(String src) {
-        try {
-            URL url = new URL(src);
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            connection.setDoInput(true);
-            connection.connect();
-            InputStream input = connection.getInputStream();
-            Bitmap myBitmap = BitmapFactory.decodeStream(input);
-            return myBitmap;
-        } catch (IOException e) {
-            Log.e(MobileConstant.exception, e.getMessage());
-            e.printStackTrace();
-            return null;
-        }
-    }
 
-    public static Drawable loadImageFromURL(String url, String name) {
+    public static Drawable loadImageFromURL(String url) {
         try {
-            InputStream is = (InputStream) new URL(url).getContent();
-            Drawable d = (BitmapDrawable) Drawable.createFromStream(is, name);
-            return d;
+            Bitmap bitmap = getImageFromUrl(url);
+            Drawable drawable = new BitmapDrawable(bitmap);
+            return drawable;
         } catch (Exception e) {
             return null;
         }
     }
 
-    public static Bitmap image(final String iconImg) {
+    public static Bitmap getImageFromUrl(final String iconImg) {
         try {
             class CargaImagenes extends AsyncTask<String, Void, Bitmap> {
                 private URL imageUrl = null;
@@ -54,6 +41,7 @@ public class UtilImage {
 
                 public CargaImagenes() {
                 }
+
                 @Override
                 protected Bitmap doInBackground(String... params) {
                     try {
