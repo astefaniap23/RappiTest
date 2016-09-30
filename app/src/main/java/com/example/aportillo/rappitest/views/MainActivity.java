@@ -48,30 +48,8 @@ public class MainActivity extends AppCompatActivity {
         LinearLayoutManager llm = new LinearLayoutManager(this);
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         recList.setLayoutManager(llm);
-        recList.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
-                                           @Override
-                                           public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
-                                               Log.i(rv.toString(), e.toString());
-                                               return false;
-                                           }
-
-                                           @Override
-                                           public void onTouchEvent(RecyclerView rv, MotionEvent e) {
-                                               Log.i(rv.toString(), e.toString());
-                                           }
-
-                                           @Override
-                                           public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
-                                               Log.i("disallowIntercept", String.valueOf(disallowIntercept));
-                                           }
-                                       }
-
-        );
-
-
         CardViewAdapter ca = new CardViewAdapter(value.getData().getChildrenList());
         recList.setAdapter(ca);
-
 
     }
 

@@ -1,7 +1,9 @@
 package com.example.aportillo.rappitest.views;
 
+import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +20,7 @@ import java.util.ArrayList;
 /**
  * Created by aportillo on 27/09/2016.
  */
-public class CardViewAdapter extends RecyclerView.Adapter<CardViewHolder> {
+public class CardViewAdapter extends RecyclerView.Adapter<CardViewHolder> implements View.OnCreateContextMenuListener, View.OnClickListener  {
 
     private ArrayList<Children>  listData;
     UtilImage utilBitmap = new UtilImage();
@@ -38,9 +40,10 @@ public class CardViewAdapter extends RecyclerView.Adapter<CardViewHolder> {
 
     @Override
     public void onBindViewHolder(CardViewHolder holder, int position) {
+
         holder.vText.setText(listData.get(position).getDataChildrenList().getTitle());
         if(!(StringUtil.isEmptyOrNull(listData.get(position).getDataChildrenList().getBannerImg().toString()))) {
-            holder.vImageView.setImageBitmap(UtilImage.image(listData.get(position).getDataChildrenList().getBannerImg()));
+            holder.vImageView.setImageBitmap(loadImage(listData.get(position).getDataChildrenList().getBannerImg()));
         }else {
             holder.vImageView.setBackgroundResource(R.drawable.rappitest);
         }
@@ -51,18 +54,18 @@ public class CardViewAdapter extends RecyclerView.Adapter<CardViewHolder> {
     public int getItemCount() {
         return listData.size();
     }
-    public static class ContactViewHolder extends RecyclerView.ViewHolder {
 
-        protected TextView vText;
-
-
-        public ContactViewHolder(View v) {
-            super(v);
-            vText =  (TextView) v.findViewById(R.id.text);
-
-        }
+    public Bitmap loadImage(String src){
+        return UtilImage.image(src);
     }
-    public Drawable loadImage(String src, String name){
-        return UtilImage.loadImageFromURL(src,name);
+
+    @Override
+    public void onClick(View v) {
+
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+
     }
 }
