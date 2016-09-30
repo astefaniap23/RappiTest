@@ -7,10 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 
 import com.example.aportillo.rappitest.R;
@@ -48,16 +46,16 @@ public class MainActivity extends AppCompatActivity {
         LinearLayoutManager llm = new LinearLayoutManager(this);
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         recList.setLayoutManager(llm);
-        recList.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
+       /* recList.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
                                            @Override
                                            public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
-                                               Log.i(rv.toString(), e.toString());
+                                               Log.i("onInterceptTouchEvent"+rv.toString(), e.toString());
                                                return false;
                                            }
 
                                            @Override
                                            public void onTouchEvent(RecyclerView rv, MotionEvent e) {
-                                               Log.i(rv.toString(), e.toString());
+                                               Log.i("onTouchEvent"+rv.toString(), e.toString());
                                            }
 
                                            @Override
@@ -66,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
                                            }
                                        }
 
-        );
+        );*/
 
 
         CardViewAdapter ca = new CardViewAdapter(value.getData().getChildrenList());

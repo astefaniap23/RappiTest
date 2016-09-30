@@ -15,8 +15,8 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_gravity="center"
-            android:scaleType="centerCrop"
-            android:src="@drawable/rappitest" />
+            android:scaleType="fitCenter"
+            android:src="@drawable/loadrappi" />
 
         <TextView
             android:id="@+id/text"
