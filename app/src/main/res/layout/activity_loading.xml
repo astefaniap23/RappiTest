@@ -9,4 +9,12 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:background="@drawable/rappitest">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="By Alba Portillo"
+        android:id="@+id/textView"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true" />
 </RelativeLayout>

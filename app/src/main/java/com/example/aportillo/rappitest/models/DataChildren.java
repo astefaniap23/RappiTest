@@ -17,15 +17,21 @@ public class DataChildren implements Serializable {
     private String title;
     @SerializedName("header_title")
     private String headerTitle;
-    @SerializedName("description")
+    @SerializedName("submit_text")
     private String description;
+    @SerializedName("icon_img")
+    private String iconImg;
+    @SerializedName("url")
+    private String url;
 
-    public DataChildren(String displayName, String bannerImg, String title, String headerTitle, String description) {
+    public DataChildren(String displayName, String bannerImg, String title, String headerTitle, String description,String iconImg,String url) {
         this.displayName = displayName;
         this.bannerImg = bannerImg;
         this.title = title;
         this.headerTitle = headerTitle;
         this.description = description;
+        this.iconImg = iconImg;
+        this.url=url;
     }
 
     public String getDisplayName() {
@@ -39,7 +45,6 @@ public class DataChildren implements Serializable {
     public String getBannerImg() {
         return bannerImg;
     }
-
 
     public void setBannerImg(String bannerImg) {
         this.bannerImg = bannerImg;
@@ -67,6 +72,22 @@ public class DataChildren implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getIconImg() {
+        return iconImg;
+    }
+
+    public void setIconImg(String iconImg) {
+        this.iconImg = iconImg;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 }
 

@@ -1,7 +1,9 @@
 package com.example.aportillo.rappitest.views;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.support.v7.widget.RecyclerView;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,9 +19,9 @@ import java.util.ArrayList;
 /**
  * Created by aportillo on 27/09/2016.
  */
-public class CardViewAdapter extends RecyclerView.Adapter<CardViewHolder> {
+public class CardViewAdapter extends RecyclerView.Adapter<CardViewHolder> implements View.OnCreateContextMenuListener, View.OnClickListener {
 
-    private ArrayList<Children>  listData;
+    private ArrayList<Children> listData;
     UtilImage utilBitmap = new UtilImage();
 
     public CardViewAdapter(ArrayList<Children> listData) {
@@ -36,8 +38,24 @@ public class CardViewAdapter extends RecyclerView.Adapter<CardViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(CardViewHolder holder, int position) {
+    public void onBindViewHolder(CardViewHolder holder, final int position) {
+
         holder.vText.setText(listData.get(position).getDataChildrenList().getTitle());
+        if (!(StringUtil.isEmptyOrNull(listData.get(position).getDataChildrenList().getBannerImg().toString())))
+            holder.vImageView.setImageBitmap(loadImage(listData.get(position).getDataChildrenList().getBannerImg()));
+        holder.vImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), DetailActivity.class);
+                intent.putExtra("description", listData.get(position).getDataChildrenList().getDescription());
+                intent.putExtra("iconImg",listData.get(position).getDataChildrenList().getIconImg());
+                intent.putExtra("headerTitle",listData.get(position).getDataChildrenList().getHeaderTitle());
+                intent.putExtra("url",listData.get(position).getDataChildrenList().getUrl());
+                view.getContext().startActivity(intent);
+
+            }
+        });
+
         holder.vImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
         if(!(StringUtil.isEmptyOrNull(listData.get(position).getDataChildrenList().getBannerImg().toString())))
             holder.vImageView.setImageBitmap(loadImage(listData.get(position).getDataChildrenList().getBannerImg()));
@@ -52,7 +70,16 @@ public class CardViewAdapter extends RecyclerView.Adapter<CardViewHolder> {
         return listData.size();
     }
 
-    public Bitmap loadImage(String src){
-        return UtilImage.image(src);
+    public Bitmap loadImage(String src) {
+        return UtilImage.getImageFromUrl(src);
+    }
+
+    @Override
+    public void onClick(View v) {
+
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
     }
 }
