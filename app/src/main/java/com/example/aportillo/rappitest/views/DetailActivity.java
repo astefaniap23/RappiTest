@@ -9,7 +9,9 @@ import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.view.View;
 import android.widget.TextView;
+
 import com.example.aportillo.rappitest.R;
+import com.example.aportillo.rappitest.util.StringUtil;
 import com.example.aportillo.rappitest.util.UtilImage;
 import com.example.aportillo.rappitest.util.constans.RestApi;
 
@@ -41,14 +43,15 @@ public class DetailActivity extends AppCompatActivity {
             url = (String) getIntent().getSerializableExtra(("url"));
             bannerImg = (String) getIntent().getSerializableExtra(("bannerImg"));
         }
-
         setTitle(headerTitle);
         setSupportActionBar(toolbar);
         textViewDetail.setText((Html.fromHtml(value)));
-        fab.setImageDrawable(UtilImage.loadImageFromURL(iconImg));
-        //fab.setOnClickListener(fabClick(v););
+        if (!StringUtil.isEmptyOrNull(iconImg)) {
+            fab.setImageDrawable(UtilImage.loadImageFromURL(iconImg));
+        } else {
+            fab.setBackgroundResource(R.drawable.ic_share_white);
+        }
         toolbar.setBackground(UtilImage.loadImageFromURL(bannerImg));
-
     }
 
     public void intentUrl(String mUrl) {
@@ -57,6 +60,7 @@ public class DetailActivity extends AppCompatActivity {
         i.setData(Uri.parse(url));
         startActivity(i);
     }
+
     @OnClick(R.id.fab)
     public void fabClick(View view) {
         intentUrl(url);
