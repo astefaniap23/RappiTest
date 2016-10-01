@@ -1,6 +1,5 @@
 package com.example.aportillo.rappitest.views;
 
-
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -10,24 +9,29 @@ import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.view.View;
 import android.widget.TextView;
-
 import com.example.aportillo.rappitest.R;
 import com.example.aportillo.rappitest.util.UtilImage;
 import com.example.aportillo.rappitest.util.constans.RestApi;
 
+import butterknife.ButterKnife;
+import butterknife.InjectView;
+import butterknife.OnClick;
+
 public class DetailActivity extends AppCompatActivity {
 
+    @InjectView(R.id.textViewDetail)
     TextView textViewDetail;
-    //Toolbar toolbar;
+    @InjectView(R.id.toolbar)
+    Toolbar toolbar;
+    @InjectView(R.id.fab)
     FloatingActionButton fab;
-    String value, iconImg, headerTitle, url,bannerImg;
+    String value, iconImg, headerTitle, url, bannerImg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
-
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        ButterKnife.inject(this);
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -38,32 +42,23 @@ public class DetailActivity extends AppCompatActivity {
             bannerImg = (String) getIntent().getSerializableExtra(("bannerImg"));
         }
 
-        loadResources();
         setTitle(headerTitle);
-
         setSupportActionBar(toolbar);
         textViewDetail.setText((Html.fromHtml(value)));
         fab.setImageDrawable(UtilImage.loadImageFromURL(iconImg));
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                intentUrl(url);
-            }
-        });
+        //fab.setOnClickListener(fabClick(v););
         toolbar.setBackground(UtilImage.loadImageFromURL(bannerImg));
 
     }
 
-    public void loadResources() {
-        textViewDetail = (TextView) findViewById(R.id.textViewDetail);
-        fab = (FloatingActionButton) findViewById(R.id.fab);
-
-    }
-
-    public void intentUrl(String mUrl){
-        String url = RestApi.BASE_URL_REDDIT+mUrl;
+    public void intentUrl(String mUrl) {
+        String url = RestApi.BASE_URL_REDDIT + mUrl;
         Intent i = new Intent(Intent.ACTION_VIEW);
         i.setData(Uri.parse(url));
         startActivity(i);
+    }
+    @OnClick(R.id.fab)
+    public void fabClick(View view) {
+        intentUrl(url);
     }
 }

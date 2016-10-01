@@ -14,7 +14,7 @@ import com.example.aportillo.rappitest.R;
 /**
  * Created by aportillo on 27/09/2016.
  */
-public class CardViewHolder extends RecyclerView.ViewHolder implements View.OnCreateContextMenuListener, View.OnClickListener {
+public class CardViewHolder extends RecyclerView.ViewHolder  {
 
     public TextView vText;
     public ImageView vImageView;
@@ -24,14 +24,4 @@ public class CardViewHolder extends RecyclerView.ViewHolder implements View.OnCr
         vText =(TextView)itemView.findViewById(R.id.text);
         vImageView = (ImageView)itemView.findViewById(R.id.imageView);
      }
-
-    @Override
-    public void onClick(View v) {
-
-    }
-
-    @Override
-    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-
-    }
 }

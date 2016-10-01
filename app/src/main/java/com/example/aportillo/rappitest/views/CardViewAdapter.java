@@ -20,10 +20,9 @@ import java.util.ArrayList;
 /**
  * Created by aportillo on 27/09/2016.
  */
-public class CardViewAdapter extends RecyclerView.Adapter<CardViewHolder> implements View.OnCreateContextMenuListener, View.OnClickListener {
+public class CardViewAdapter extends RecyclerView.Adapter<CardViewHolder>  {
 
     private ArrayList<Children> listData;
-    UtilImage utilBitmap = new UtilImage();
 
     public CardViewAdapter(ArrayList<Children> listData) {
         this.listData = listData;
@@ -41,8 +40,6 @@ public class CardViewAdapter extends RecyclerView.Adapter<CardViewHolder> implem
     @Override
     public void onBindViewHolder(CardViewHolder holder, final int position) {
         android.view.ViewGroup.LayoutParams layoutParams = holder.vImageView.getLayoutParams();
-
-
         holder.vText.setText(listData.get(position).getDataChildrenList().getTitle());
         if (!(StringUtil.isEmptyOrNull(listData.get(position).getDataChildrenList().getBannerImg().toString()))) {
             holder.vImageView.setImageBitmap(loadImage(listData.get(position).getDataChildrenList().getBannerImg()));
@@ -79,12 +76,5 @@ public class CardViewAdapter extends RecyclerView.Adapter<CardViewHolder> implem
         return UtilImage.getImageFromUrl(src);
     }
 
-    @Override
-    public void onClick(View v) {
 
-    }
-
-    @Override
-    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-    }
 }

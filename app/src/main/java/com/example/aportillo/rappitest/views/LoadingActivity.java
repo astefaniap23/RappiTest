@@ -14,7 +14,6 @@ import com.example.aportillo.rappitest.util.constans.RestApi;
 public class LoadingActivity extends AppCompatActivity {
     private ListService listService = new ListService(RestApi.BASE_URL);
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,7 +31,6 @@ public class LoadingActivity extends AppCompatActivity {
                     intent.putExtra("listData", listData);
                     startActivity(intent);
                 }
-
                 @Override
                 public void onError() {
                     Log.e(MobileConstant.error, MobileConstant.error);
