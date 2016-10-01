@@ -10,9 +10,8 @@
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="200dp"
             android:layout_gravity="center"
-            android:scaleType="fitCenter"
             android:src="@drawable/loadrappi"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true" />

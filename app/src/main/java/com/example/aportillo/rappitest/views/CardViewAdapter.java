@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.example.aportillo.rappitest.R;
 import com.example.aportillo.rappitest.models.Children;
@@ -39,12 +40,17 @@ public class CardViewAdapter extends RecyclerView.Adapter<CardViewHolder> implem
 
     @Override
     public void onBindViewHolder(CardViewHolder holder, final int position) {
+        android.view.ViewGroup.LayoutParams layoutParams = holder.vImageView.getLayoutParams();
+
 
         holder.vText.setText(listData.get(position).getDataChildrenList().getTitle());
         if (!(StringUtil.isEmptyOrNull(listData.get(position).getDataChildrenList().getBannerImg().toString()))) {
             holder.vImageView.setImageBitmap(loadImage(listData.get(position).getDataChildrenList().getBannerImg()));
-        }else{
+            layoutParams.width = ViewGroup.LayoutParams.MATCH_PARENT;
+            layoutParams.height = ViewGroup.LayoutParams.MATCH_PARENT;
+            holder.vImageView.setLayoutParams(layoutParams);
         }
+
         holder.vImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -62,10 +68,6 @@ public class CardViewAdapter extends RecyclerView.Adapter<CardViewHolder> implem
         holder.vImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
         if(!(StringUtil.isEmptyOrNull(listData.get(position).getDataChildrenList().getBannerImg().toString())))
             holder.vImageView.setImageBitmap(loadImage(listData.get(position).getDataChildrenList().getBannerImg()));
-        /*else {
-            holder.vImageView.setBackgroundResource(R.drawable.loadrappi);
-        }*/
-
     }
 
     @Override
